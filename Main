@@ -1,0 +1,21 @@
+package com.gotze.blockBreakSounds;
+
+import com.gotze.blockBreakSounds.Listeners.BlockBreakListener;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class Main extends JavaPlugin {
+
+    @Override
+    public void onEnable() {
+        this.getLogger().info("Block Break Sounds Plugin has started");
+
+        getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
+        getCommand("blockbreaksounds").setExecutor(new BlockBreakSoundsExecutor());
+        getCommand("blockbreaksounds").setTabCompleter(new BlockBreakSoundsTabCompletor());
+    }
+
+    @Override
+    public void onDisable() {
+        this.getLogger().info("Block Break Sounds Plugin has stopped");
+    }
+}
